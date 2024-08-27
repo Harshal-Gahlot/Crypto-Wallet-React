@@ -1,0 +1,8 @@
+{
+    "wallet-1" : {
+        "mnumonci" : "",
+        "accounts" : [
+            [1, "SOL", 3.0, "privatekey", "publicKey"]
+        ]
+    }
+}

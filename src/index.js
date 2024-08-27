@@ -1,27 +1,11 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { App } from "./app.jsx";
 
 import "./index.css";
-import { PasswordContainer } from "./html components/password container";
-import { AccountList } from "./html components/account list";
-import { MiddleContainer } from "./html components/main container/middle container";
-import { NavRight, NavLeft } from "./html components/main container/nav";
 
-const App = () => {
-    return (
-        <>
-            < PasswordContainer />
-
-            <main id="main">
-                < NavLeft />
-                < MiddleContainer />
-                < NavRight />
-            </main>
-
-            < AccountList />
-        </>
-    );
-};
-
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<App />);
+createRoot(document.getElementById("root")).render(
+    <StrictMode>
+    <App />
+    </StrictMode>
+)

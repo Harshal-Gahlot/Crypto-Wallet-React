@@ -1,14 +1,14 @@
 @font-face {
     font-family: 'mainfont';
-    src: url(assets/fonts/GILSANUB.TTF)
+    src: url(../public/assets/fonts/GILSANUB.TTF)
 }
 @font-face{
-font-family: 'submainfont';
-src: url(assets/fonts/COPRGTL.TTF);
+    font-family: 'submainfont';
+    src: url(../public/assets/fonts/COPRGTL.TTF);
 }
 @font-face{
-font-family: 'subfont';
-src: url(assets/fonts/LSANS.TTF);
+    font-family: 'subfont';
+    src: url(../public/assets/fonts/LSANS.TTF);
 }
 
 :root {
@@ -104,6 +104,25 @@ body {
     border-bottom: 3px solid rgb(28, 208, 240);
     outline: none;
     color: transparent;
+}
+
+#invalid {
+    color: #f00;
+    position: absolute;
+    text-align: center;
+    animation: invalid_anime 0.4s ease-in 0s 1 normal forwards;
+    font-style: "subfont";
+    font-size: 15px;
+}
+
+@keyframes invalid_anime {
+    0%{
+        bottom: 20px;
+        transform: scale(90%);
+    }
+    100%{
+        bottom: 30px;   
+    }
 }
 
 form {
@@ -206,10 +225,6 @@ main {
 
 /* Main wallet screen Nav stuff */
 
-.main_nav > * {
-    /* background-color: #000; */
-}
-
 .main_nav {
     display: flex;
     flex-direction: column;
@@ -225,13 +240,13 @@ main {
     cursor: pointer;
 }
 
-
 /* ADD AND SHOW ACCOUNT WITH BALLANCE */
 
 #account_manager {
     position: relative;
     z-index: 10;
-    max-height: 55%;
+    max-height: 200px;
+    /* max-height: 190px; */
     margin: 10px;
     overflow-y: scroll;
 }
