@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, createContext, useContext } from "react";
 
-import { PasswordContainer } from "./html components/password container";
-import { AccountList } from "./html components/account list";
-import { MiddleContainer } from "./html components/main container/middle container";
-import { NavRight, NavLeft } from "./html components/main container/nav";
+import { ContextProvider } from "./context";
+import { PasswordContainer } from "./components/password container";
+import { AccountList } from "./components/account list";
+import { MiddleContainer } from "./components/middle container";
+import { NavRight, NavLeft } from "./components/nav";
 
 export const App = () => {
     const [isLocked, setIsLocked] = useState(true);
@@ -11,16 +12,17 @@ export const App = () => {
     // const Lock = () => setIsLocked(true);
 
     return (
-        <> {
-            isLocked ? (< PasswordContainer onCorrectPassword={Unlock} />)
-            : (<>
-                <main id="main">
+            
+        <ContextProvider >
+            
+            {isLocked ? (< PasswordContainer onCorrectPassword={Unlock} />) 
+            : (<> <main id="main">
                     <NavLeft />
-                    <MiddleContainer />
+                    <MiddleContainer accountID={1} />
                     <NavRight />
                 </main>
-                <AccountList /> </> 
-            )
-        } </>
+                <AccountList /> </>
+            )}
+        </ContextProvider >
     );
 };

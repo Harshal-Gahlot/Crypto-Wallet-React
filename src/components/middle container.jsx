@@ -1,6 +1,13 @@
+import { useContext } from "react";
+import { Context } from "../context";
+
 export function MiddleContainer() {
+    const {currID, cards} = useContext(Context);
+    const displayCard = cards[currID];
+
     return (
         <article id="main_content">
+
             <header>
                 <h4>Add Wallet</h4>
                 <svg width="20" fill="#0D7377" viewBox="0 0 96 96">
@@ -8,8 +15,9 @@ export function MiddleContainer() {
                     <path d="M81.8457,25.3876a6.0239,6.0239,0,0,0-8.45.7676L48,56.6257l-25.396-30.47a5.999,5.999,0,1,0-9.2114,7.6879L43.3943,69.8452a5.9969,5.9969,0,0,0,9.2114,0L82.6074,33.8431A6.0076,6.0076,0,0,0,81.8457,25.3876Z" />
                 </svg>
             </header>
+
             <div id="pubkey_copy">
-                <p>0xe8...916F</p>
+                <p>{displayCard[4]}</p>
                 <svg width="12" height="15" viewBox="0 0 12 15">
                     <path
                         fill="currentColor"
@@ -20,9 +28,10 @@ export function MiddleContainer() {
             </div>
 
             <section id="ammount_display">
-                <h1 id="ammount_crypto">0.05 SOL</h1>
-                <h4 id="ammount_USDC">10 $</h4>
+                <h1 id="ammount_crypto">{displayCard[2]}</h1>
+                <h4 id="ammount_USDC">{`$ ${130 * displayCard[2]}`}</h4>
             </section>
+            
         </article>
     )
 }
