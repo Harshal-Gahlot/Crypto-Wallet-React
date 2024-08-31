@@ -7,16 +7,17 @@ export function PasswordContainer(props) {
     const [showError, setShowError] = useState(false)
     const checkPassword = (event) => {
         event.preventDefault();
-        const localPassword = "lol";
+        const localPassword = "code";
         if (password === "") {
             // return;
             props.onCorrectPassword();
-        } else if (password === localPassword) {
-            props.onCorrectPassword();
-            setShowError(false);
         } else {
             setShowError(true);
         }
+
+        // } else if (password === localPassword) {
+        //     props.onCorrectPassword();
+        //     setShowError(false);
     };
 
     return (
@@ -34,7 +35,7 @@ export function PasswordContainer(props) {
                         id="password_input"
                     />
                 </article>
-                <button id="unlock">
+                <button className="btn">
                     <span className="btn_copy"></span>Unlock
                 </button>
             </form>

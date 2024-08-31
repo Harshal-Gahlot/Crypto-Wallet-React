@@ -1,3 +1,5 @@
+// Ignore this file, it is re-written in small components.
+
 // import { useState, useEffect } from "react";
 // import { NavRight, NavLeft } from "./nav";
 

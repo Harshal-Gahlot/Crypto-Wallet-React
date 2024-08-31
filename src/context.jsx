@@ -1,24 +1,40 @@
 import { useState, useEffect, createContext } from "react";
-
 export const Context = createContext();
 
-export function ContextProvider({children}) { 
-    const wallet1 = localStorage.getItem("wallet-1") ? JSON.parse(localStorage.getItem("wallet-1")) : {};
-    const [cards, setCards] = useState(wallet1["accounts"] || []);
+export function ContextProvider({ children }) {
+    const walletExists = localStorage.getItem("wallet-1") !== null;
 
-    const currentData = localStorage.getItem("currectData") ? JSON.parse(localStorage.getItem("currectData")) : {};
-    const [currID, setCurrID] = useState(currentData["accountID"] = 0);
+    const [walletScreen, setWalletScreen] = useState(walletExists ? 'exist' : 'create');
+
+    const [wallet1, setWallet1] = useState(() => {
+        const storedWallet = localStorage.getItem("wallet-1");
+        return storedWallet ? JSON.parse(storedWallet) : null;
+    });
+    const [cards, setCards] = useState(() => {
+        return wallet1 && wallet1["accounts"] ? wallet1["accounts"] : [];
+    });
+
+    const [currID, setCurrID] = useState(() => {
+        const currentData = localStorage.getItem("currectData");
+        return currentData ? JSON.parse(currentData)["accountID"] : 0;
+    });
+
+    const [MyWallet, setMyWallet] = useState(null);
 
     useEffect(() => {
-        localStorage.setItem("currectData", JSON.stringify({accountID:currID}));
+        localStorage.setItem("currectData", JSON.stringify({ accountID: currID }));
     }, [currID]);
 
     useEffect(() => {
-        localStorage.setItem("wallet-1", JSON.stringify({accounts:cards}));
-    },[cards]);
-    
+        if (wallet1 !== null) {
+            const updatedWallet = { ...wallet1, accounts: cards };
+            localStorage.setItem("wallet-1", JSON.stringify(updatedWallet));
+            setWallet1(updatedWallet);
+        }
+    }, [cards]);
+
     return (
-        <Context.Provider value={{currID, setCurrID, cards, setCards, wallet1}}>
+        <Context.Provider value={{ walletScreen, setWalletScreen, currID, setCurrID, cards, setCards, wallet1, MyWallet, setMyWallet }}>
             {children}
         </Context.Provider>
     );

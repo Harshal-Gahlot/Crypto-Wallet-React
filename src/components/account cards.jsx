@@ -3,6 +3,7 @@ import { Context } from "../context";
 
 export default function AccountCards() {
     const {setCurrID, cards} = useContext(Context);
+    // const if = (cards.length) ? cards[currID] : ['-', '-', '-', '-', '-'];
 
     return (
         <>

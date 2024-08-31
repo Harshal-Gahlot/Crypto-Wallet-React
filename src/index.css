@@ -43,6 +43,113 @@ body {
     outline: 2px solid #0088ff;
 }
 
+/* Generate new wallet and mnumonic state */
+
+#display_wallet_creation_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    gap: 10px;
+}
+
+#display_wallet_creation_container p {
+    text-align: center;
+    padding-bottom: 10px;
+    padding-top: -50px;
+    max-width: 25ch;
+    color: var(--tertiary-color);
+}
+
+#show_secret_phrase_btn_copy {
+    position: absolute;
+    padding: 1px 80px;
+    background: var(--my-liner-grad);
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 900;
+    font-family: "submainfont" ;
+    color: transparent;
+    z-index: -10;
+    top: 10%;
+    transform: translate(-10%, -20%) scaleY(0.74);
+}
+
+#show_secret_phrase_btn {
+    position: relative;
+    padding: 10px 20px;
+    background: blueviolet;
+    border-radius: 10px;
+    border:none;
+    font-size: 16px;
+    font-weight: 900;
+    font-family: "submainfont";
+    margin-bottom: 10px;
+}
+
+#show_secret_phrase_btn:hover {
+    transform: translate(-2px, 2px);
+}
+
+#show_secret_phrase_btn:hover span {
+    display: none;
+    background-color: transparent;
+}
+
+#get_secret_input {
+
+    padding: 10px;
+    width: 260px;
+    border-radius: 4px;
+    background-color: #303030;
+    color: var(--secondry-color);
+    border: 1px solid var(--tertiary-color);
+}
+
+#get_secret_input:focus {
+    outline: 1px solid var(--secondry-color);
+}
+
+/* Display Mnumonic screen */
+
+#show_secret_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
+}
+
+#show_secret_container p {
+    text-align: center;
+    padding: 10px;
+    color: var(--tertiary-color);
+}
+#mnemonic_words {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+    height: 20vh;
+    place-content: center;
+    width: 340px;
+}
+
+.mnemonic_word {
+    background-color: #303030;
+    user-select: text;
+    padding: 8px 2px;
+    text-align: center;
+    place-items: center;
+    border-radius: 8px;
+    overflow-x: visible;
+    text-wrap:wrap;
+    font-size: 14px;
+    font-family: "subfont";
+}
+
+#mnemonic_saved {
+    margin-top: 16px;
+}
+
 /* Prompt To Unlock Wallet State  */
 
 #password_container {
@@ -110,7 +217,7 @@ body {
     color: #f00;
     position: absolute;
     text-align: center;
-    animation: invalid_anime 0.4s ease-in 0s 1 normal forwards;
+    animation: invalid_anime 0.35s ease-in 1 forwards;
     font-style: "subfont";
     font-size: 15px;
 }
@@ -132,7 +239,7 @@ form {
 }
 
 .btn_copy {
-    z-index: -1000;
+    z-index: -10;
     background: var(--my-liner-grad);
     width: 91.3%;
     height: 49.5%;
@@ -142,7 +249,7 @@ form {
     padding: 10px;
 }
 
-#unlock {
+.btn {
     position: relative;
     padding: 10px 80px;
     background: blueviolet;
@@ -153,11 +260,11 @@ form {
     font-family: "submainfont" ;
 }
 
-#unlock:hover {
+.btn:hover {
     transform: translate(2px, 2px);
 }
 
-#unlock:hover span {
+.btn:hover span {
     display: none;
 }
 
@@ -272,6 +379,8 @@ main {
     text-align: center;
     margin: -6px 0 2px 0;
     cursor: default;
+    z-index: 10000 !important;
+    overflow-y: visible;
 }
 
 #add_account_container {

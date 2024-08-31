@@ -3,7 +3,7 @@ import { Context } from "../context";
 
 export function MiddleContainer() {
     const {currID, cards} = useContext(Context);
-    const displayCard = cards[currID];
+    const displayCard = (cards.length) ? cards[currID] : ['-','-',' ','-','-'];
 
     return (
         <article id="main_content">
@@ -28,7 +28,7 @@ export function MiddleContainer() {
             </div>
 
             <section id="ammount_display">
-                <h1 id="ammount_crypto">{displayCard[2]}</h1>
+                <h1 id="ammount_crypto">{displayCard[2]} {displayCard[1]}</h1>
                 <h4 id="ammount_USDC">{`$ ${130 * displayCard[2]}`}</h4>
             </section>
             
